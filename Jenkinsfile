@@ -15,5 +15,13 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
+        stage ('Deploy war file on Tomcat Server')
+        {
+            steps{
+                 sh sshagent(['Tomcat-SSH']) {
+                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war centos@65.1.1.72:/opt/tomcat/webapps"
+                 }
+            }
+        }
     }
 }
