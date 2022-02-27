@@ -1,8 +1,5 @@
 pipeline{
     agent any
-    environment {
-        PATH = "$PATH:/home/ansadmin/etc/ansible"
-    }
     stages
     {
         stage ('Checkout From SCM')
