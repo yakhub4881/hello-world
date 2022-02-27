@@ -6,7 +6,7 @@ pipeline{
         {
             steps
             {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'hello-world-ansible-git', url: 'https://github.com/yakhub4881/hello-world.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yakhub4881/hello-world.git']]])
             }
         }
         stage ('BUILD')
@@ -15,7 +15,7 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
-        stage ('Deploy war file on Tomcat Server')
+        stage ('Deploy index.html file and start httpd package')
         {
             steps{
                  ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', disableHostKeyChecking: true, installation: 'ansible2.7.5', inventory: 'dev.inv', playbook: 'master1.yml'
