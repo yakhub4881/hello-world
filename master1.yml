@@ -6,17 +6,18 @@
   
   tasks:
 
-    - name: install httpd service
+    - name: install httpd
       yum: name=httpd state=latest
 
     - name: copy index.html
       copy: src=index.html dest=/var/www/html
       notify:
-      - restart httpd service
+      - restart httpd
 
     - name: start and enable httpd service
       service: name=httpd state=started enabled=yes
 
   handlers:
-  service: name=httpd state=restarted 
+    - name: restart httpd
+      service: name=httpd state=restarted 
 
