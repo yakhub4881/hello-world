@@ -1,11 +1,11 @@
 ---
-- name: this is tomcat ansible playbook
+- name: this is httpd ansible playbook
   hosts: all
   become_user: root
   become: true
   
   tasks:
-
+  
     - name: install httpd
       yum: name=httpd state=latest
 
