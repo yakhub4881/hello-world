@@ -19,7 +19,7 @@ pipeline{
         {
             steps{
                  ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', installation: 'ansible2.9.27', inventory: 'hosts', playbook: 'master1.yml'
-                 sh 'ansible-playbook msater.yml'
+                 sh 'ansible-playbook master1.yml'
             }
         }
     }
