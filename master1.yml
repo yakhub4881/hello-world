@@ -5,5 +5,18 @@
   become: true
   
   tasks:
-    - name: deploy war file on tomcat server
-      copy: src=/webapp/target/webapp.war dest=/opt/tomcat/webapps
+
+    - name: install httpd service
+      yum: name=httpd state=latest
+
+    - name: copy index.html
+      copy: src=index.html dest=/var/www/html
+      notify:
+      - restart httpd service
+
+    - name: start and enable httpd service
+      service: name=httpd state=started enabled=yes
+
+  handlers:
+  service: name=httpd state=restarted 
+
