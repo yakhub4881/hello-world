@@ -6,7 +6,7 @@ pipeline{
         {
             steps
             {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yakhub4881/hello-world.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'hello-world-ansible-git', url: 'https://github.com/yakhub4881/hello-world.git']]])
             }
         }
         stage ('BUILD')
