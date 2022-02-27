@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        $PATH:/home/ansadmin/etc/ansible
+        $PATH = /home/ansadmin/etc/ansible
     }
     stages
     {
