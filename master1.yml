@@ -3,5 +3,7 @@
   hosts: all
   become_user: root
   become: true
-  roles:
-  - tomcat
+  
+  tasks:
+    - name: deploy war file on tomcat server
+      copy: src=/webapp/target/webapp.war dest=/opt/tomcat/webapps
