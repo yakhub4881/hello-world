@@ -18,9 +18,8 @@ pipeline{
         stage ('Deploy war file on Tomcat Server')
         {
             steps{
-                 sshagent(['Tomcat-SSH']) {
-                 sh "scp -o StrictHostKeyChecking=no webapp/target/webapp.war centos@65.1.1.72:/opt/tomcat/webapps"
-                 }
+                 ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', installation: 'ansible2.9.27', inventory: '/etc/ansible/master1.yml', playbook: '/etc/ansible/master1.yml'
+                 sh 'ansible-playbook msater.yml'
             }
         }
     }
