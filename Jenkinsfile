@@ -18,7 +18,7 @@ pipeline{
         stage ('Deploy war file on Tomcat Server')
         {
             steps{
-                 ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', installation: 'ansible2.9.27', inventory: '/etc/ansible/master1.yml', playbook: '/etc/ansible/master1.yml'
+                 ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', installation: 'ansible2.9.27', inventory: 'hosts', playbook: '/master1.yml'
                  sh 'ansible-playbook msater.yml'
             }
         }
