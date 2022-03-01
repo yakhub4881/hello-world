@@ -15,11 +15,5 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
-        stage ('Deploy index.html file and start httpd package')
-        {
-            steps{
-                 ansiblePlaybook become: true, credentialsId: 'Ansible-SSH', disableHostKeyChecking: true, installation: 'ansible2.7.5', inventory: 'dev.inv', playbook: 'master1.yml'
-            }
-        }
     }
 }
